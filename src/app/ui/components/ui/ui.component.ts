@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ui.component.scss']
 })
 export class UiComponent implements OnInit {
+  public open : boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public toggle(): void {
+    this.open = !this.open;
+  }
 }
