@@ -1,5 +1,6 @@
 <header class="fixed-top">
     instance de header component
+    <ng-content select="[tr-header]"></ng-content>
 </header>
 <main>
     <div class="shadow position-fixed">
@@ -9,6 +10,7 @@
     <aside>
         <div class="scroller">
             instance de nav component
+            <ng-content select=".tr-nav"></ng-content>
         </div>
     </aside>
 
@@ -20,6 +22,7 @@
 
         <footer>
             instance de footer component
+            <ng-content select=".tr-footer"></ng-content>
         </footer>
 
     </div>
