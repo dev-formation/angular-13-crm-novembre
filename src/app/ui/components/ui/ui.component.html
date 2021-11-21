@@ -1,5 +1,4 @@
 <header class="fixed-top">
-    instance de header component
     <span (click)="toggle()">
         <ng-container *ngIf="open;then thenBlock else elseBlock" ></ng-container>
         
@@ -28,7 +27,6 @@
 
     <aside>
         <div class="scroller">
-            instance de nav component
             <ng-content select=".tr-nav"></ng-content>
         </div>
     </aside>
@@ -36,11 +34,10 @@
     <div class="page">
 
         <div class="contents">
-            instance d'un component en fonction de la route
+            <ng-content select=".tr-content"></ng-content>
         </div>
 
         <footer>
-            instance de footer component
             <ng-content select=".tr-footer"></ng-content>
         </footer>
 
