@@ -10,7 +10,8 @@ import { LoginModule } from '../login/login.module';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    CommonModule
+  ], exports : [
     UiModule,
     IconsModule,
     TemplatesModule,
