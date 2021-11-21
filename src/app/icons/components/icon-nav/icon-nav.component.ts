@@ -11,6 +11,7 @@ export class IconNavComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('nav-icon instance');
   }
 
 }

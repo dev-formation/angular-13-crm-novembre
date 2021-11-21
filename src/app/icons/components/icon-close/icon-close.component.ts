@@ -11,6 +11,8 @@ export class IconCloseComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('close-icon instance');
+    
   }
 
 }
