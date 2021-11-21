@@ -3,3 +3,7 @@
 @import "./stylings/theme";
 @import "~bootstrap/scss/bootstrap";
 //node_modules/bootstrap/scss/bootstrap.scss
+
+html,body {
+    height: 100%;
+}

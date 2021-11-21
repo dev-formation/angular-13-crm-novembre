@@ -1,12 +1,17 @@
-<div>
-    <ng-content select=".tr-header"></ng-content>
-</div>
-<div>
-    <ng-content select=".tr-nav"></ng-content>
-</div>
-<div>
-    <ng-content select=".tr-content"></ng-content>
-</div>
-<div>
-    <ng-content select=".tr-footer"></ng-content>
+<div class="flex">
+    <header>
+        <ng-content select=".tr-header"></ng-content>
+    </header>
+
+    <nav>
+        <ng-content select=".tr-nav"></ng-content>
+    </nav>
+
+    <main>
+        <ng-content select=".tr-content"></ng-content>
+    </main>
+
+    <footer>
+        <ng-content select=".tr-footer"></ng-content>
+    </footer>
 </div>
