@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VersionService } from '../../services/version.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private versionService: VersionService) { }
 
   ngOnInit(): void {
+  }
+
+  public onClickIncrement(): void {
+    this.versionService.incrementVersion();
   }
 
 }
