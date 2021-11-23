@@ -7,7 +7,7 @@ import { OrdersService } from '../../services/orders.service';
   styleUrls: ['./page-list-orders.component.scss']
 })
 export class PageListOrdersComponent implements OnInit {
-
+  public myTitle = {name: 'Liste Orders'};
   constructor(private ordersService: OrdersService) {
     this.ordersService.collection$.subscribe(
       {
@@ -47,6 +47,10 @@ export class PageListOrdersComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  changeTitle(): void {
+    this.myTitle = {name: "My Super List Orders"};
   }
 
 }
