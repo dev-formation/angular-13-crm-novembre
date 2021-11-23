@@ -1,0 +1,17 @@
+<table>
+    <thead>    
+        <tr>
+            <th *ngFor="let itemHeader of headers"> {{itemHeader}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let itemData of collection">
+            <td>{{ itemData.typePresta }}</td>
+            <td>{{ itemData.client }}</td>
+            <td>{{ itemData.nbJours }}</td>
+            <td>{{ itemData.tjmHt }}</td>
+            <td>{{ itemData.state }}</td>
+        </tr>
+    </tbody>
+
+</table>
