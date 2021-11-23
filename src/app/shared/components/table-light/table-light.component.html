@@ -1,17 +1,10 @@
-<table>
-    <thead>    
+<table class="table">
+    <thead>
         <tr>
-            <th *ngFor="let itemHeader of headers"> {{itemHeader}} </th>
+            <th *ngFor="let item of headers" scope="col">{{ item }}</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let itemData of collection">
-            <td>{{ itemData.typePresta }}</td>
-            <td>{{ itemData.client }}</td>
-            <td>{{ itemData.nbJours }}</td>
-            <td>{{ itemData.tjmHt }}</td>
-            <td>{{ itemData.state }}</td>
-        </tr>
+        <ng-content></ng-content>
     </tbody>
-
 </table>

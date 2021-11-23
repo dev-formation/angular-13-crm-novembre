@@ -13,7 +13,7 @@ export class PageListOrdersComponent implements OnInit {
   public headers: string[];
 
   constructor(private ordersService: OrdersService) {
-    this.headers = ['Type', 'Client', 'Nb Jours', 'TJM HT', 'State'];
+    this.headers = ['Type', 'Client', 'Nb Jours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
     
     this.ordersService.collection$.subscribe(data => this.collection = data);
     
