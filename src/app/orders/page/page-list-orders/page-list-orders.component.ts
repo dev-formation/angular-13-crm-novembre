@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -19,11 +20,15 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
   public stateOrder = StateOrder;
   public states = Object.values(StateOrder);
 
-  constructor(private ordersService: OrdersService) {
-    this.headers = ['Type', 'Client', 'Nb Jours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
+  constructor(
+    private ordersService: OrdersService,
+    private router: Router
+    ) {
+    this.headers = ['','','Type', 'Client', 'Nb Jours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
     
     // this.ordersService.collection$.subscribe(data => this.collection = data);
     this.collection$ = this.ordersService.collection$
+    this.ordersService.refreshCollection();
     
     // this.ordersService.behave$.subscribe(data => console.log('******** behave :', data));
     // this.ordersService.collection$.subscribe(
@@ -111,6 +116,15 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
   public onSelectChangeState(order: Order, event:any): void {
     const state = event.target.value;
     this.ordersService.changeState(order, state).subscribe( data => Object.assign(order,data));
+  }
+
+  public onClickGoToEdit(item: Order): void {
+    this.router.navigate(['orders','edit', item.id])
+  }
+
+  public onClickDelete(item: Order): void {
+    // this.router.navigate(['orders','edit', item.id])
+    this.ordersService.delete(item.id).subscribe();
   }
 
 

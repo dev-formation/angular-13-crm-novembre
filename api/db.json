@@ -5,7 +5,7 @@
       "nbJours": 20,
       "tva": 20,
       "state": "CANCELED",
-      "typePresta": "formation",
+      "typePresta": "formationTEST",
       "client": "Capgemini2",
       "comment": "Merci Cap pour les 24k",
       "id": 1
@@ -17,7 +17,7 @@
       "state": "OPTION",
       "typePresta": "formation",
       "client": "Modis",
-      "comment": "fgddhf",
+      "comment": "fg",
       "id": 2
     },
     {
@@ -64,21 +64,11 @@
       "tjmHt": 1200,
       "nbJours": 20,
       "tva": 20,
-      "state": "CANCELED",
-      "typePresta": "confi",
+      "state": "OPTION",
+      "typePresta": "confiTest",
       "client": "confi",
       "comment": null,
       "id": 7
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 20,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": null,
-      "client": null,
-      "comment": null,
-      "id": 8
     }
   ],
   "clients": [

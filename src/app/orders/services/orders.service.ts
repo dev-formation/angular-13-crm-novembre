@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { StateOrder } from 'src/app/core/enums/state-order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
-  public collection$ !: Observable<Order[]>;
+  public collection$ = new BehaviorSubject<Order[]>([]);
   private urlApi = environment.urlApi;
 
   // public behave$ = new BehaviorSubject(0);
@@ -30,13 +30,13 @@ export class OrdersService {
   constructor(private http: HttpClient) { 
     console.log('service orders instanced');
     
-    this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
-      map(tab => {
-        return tab.map((obj) => {
-          return new Order(obj)
-        })
-      })
-    );
+    // this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+    //   map(tab => {
+    //     return tab.map((obj) => {
+    //       return new Order(obj)
+    //     })
+    //   })
+    // );
 
     /**
      * Explication Observable froid
@@ -66,12 +66,34 @@ export class OrdersService {
   //    this.behave.next('Yes Papa');
   // }
 
+  public refreshCollection(): void {
+    this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      map(tab => {
+        return tab.map((obj) => {
+          return new Order(obj)
+        })
+      })
+    ).subscribe((data:Order[]) => {
+      this.collection$.next(data);
+    })
+  }
+
+  public getById(itemId: number): Observable<Order> {
+    return this.http.get<Order>(`${this.urlApi}/orders/${itemId}`);
+  }
+
   public add(item: Order): Observable<any> {
     return this.http.post<any>(`${this.urlApi}/orders`, item);
   }
   
   public update(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
+  }
+
+  public delete(itemId: number): Observable<Order> {
+    return this.http.delete<Order>(`${this.urlApi}/orders/${itemId}`).pipe(
+      tap(()=> this.refreshCollection())
+    );
   }
 
   public changeState(item: Order, state: StateOrder): Observable<Order> 
