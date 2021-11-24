@@ -69,7 +69,6 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
   ngOnChanges(): void {
     console.log('----OnChange');
     
-    
   }
 
   ngDoCheck(): void {
@@ -111,7 +110,7 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
 
   public onSelectChangeState(order: Order, event:any): void {
     const state = event.target.value;
-    this.ordersService.changeState(order, state).subscribe( data => order = data);
+    this.ordersService.changeState(order, state).subscribe( data => Object.assign(order,data));
   }
 
 

@@ -12,8 +12,7 @@
             <td> {{ item.tjmHt | total : item.nbJours : item.tva}} </td> -->
             <td> {{ item | total }} </td>
             <td> {{ item | total : true}} </td>
-            <td>{{ item.state }}</td>
-            <td>
+            <td [appState]="item.state" >
                 <select (change)="onSelectChangeState(item, $event)">
                     <option 
                         *ngFor="let state of stateOrder | keyvalue"
@@ -32,6 +31,7 @@
                         > {{ state }} </option> -->
                 </select>
             </td>
+            
         </tr>
     </app-table-light>
     <app-btn></app-btn>
