@@ -14,4 +14,11 @@ export class Order {
             Object.assign(this,obj);
         }
     }
+    public totalHT(): number {
+        return this.tjmHt * this.nbJours
+    }
+
+    public totalTTC(): number {
+        return this.tjmHt * this.nbJours * (1 * this.tva / 100);
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/orders/services/orders.service';
 import { VersionService } from '../../services/version.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { VersionService } from '../../services/version.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private versionService: VersionService) { }
+  constructor(
+    private versionService: VersionService,
+    private ordersService: OrdersService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +20,9 @@ export class NavComponent implements OnInit {
   public onClickIncrement(): void {
     this.versionService.incrementVersion();
   }
+
+  // public onClickBehave(): void {
+  //   this.ordersService.behave$.next(this.ordersService.behave$.value + 1);
+  // }
 
 }

@@ -1,14 +1,18 @@
-<app-template-full-width [title]="myTitle" *ngIf="collection">
+<app-template-full-width [title]="myTitle" *ngIf="collection$ | async as collectionVar">
     <button (click)="changeTitle()" >Change the title</button>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia facilis qui repudiandae. Qui consectetur unde veritatis quas repudiandae ad nam est veniam, omnis hic, incidunt vitae culpa non saepe temporibus.</p>
     <app-table-light [headers]="headers">
-        <tr *ngFor="let item of collection">
+        <tr *ngFor="let item of collectionVar">
             <td>{{ item.typePresta }}</td>
             <td>{{ item.client }}</td>
             <td>{{ item.nbJours }}</td>
             <td>{{ item.tjmHt }}</td>
-            <td>Total HT</td>
-            <td>Total TTC</td>
+            <!-- <td> {{ total(item.tjmHt, item.nbJours)}} </td>
+            <td> {{ total(item.tjmHt, item.nbJours, item.tva)}} </td> -->
+            <!-- <td> {{ item.tjmHt | total : item.nbJours}} </td>
+            <td> {{ item.tjmHt | total : item.nbJours : item.tva}} </td> -->
+            <td> {{ item | total }} </td>
+            <td> {{ item | total : true}} </td>
             <td>{{ item.state }}</td>
         </tr>
     </app-table-light>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class OrdersService {
   public collection$ !: Observable<Order[]>;
   private urlApi = environment.urlApi;
+
+  // public behave$ = new BehaviorSubject(0);
 
   /**
    * Explication Observable froid
@@ -26,7 +29,13 @@ export class OrdersService {
   constructor(private http: HttpClient) { 
     console.log('service orders instanced');
     
-    this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`);
+    this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      map(tab => {
+        return tab.map((obj) => {
+          return new Order(obj)
+        })
+      })
+    );
 
     /**
      * Explication Observable froid
