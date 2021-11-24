@@ -49,6 +49,26 @@
       "client": "Modis",
       "comment": "Merci Modis pour les 10k",
       "id": 5
+    },
+    {
+      "tjmHt": 1200,
+      "nbJours": 20,
+      "tva": 20,
+      "state": "OPTION",
+      "typePresta": "Type spe",
+      "client": "Lidl",
+      "comment": "Coucoucou",
+      "id": 6
+    },
+    {
+      "tjmHt": 1200,
+      "nbJours": 20,
+      "tva": 20,
+      "state": "CANCELED",
+      "typePresta": "confi",
+      "client": "confi",
+      "comment": null,
+      "id": 7
     }
   ],
   "clients": [

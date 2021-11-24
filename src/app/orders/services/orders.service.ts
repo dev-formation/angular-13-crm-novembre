@@ -66,6 +66,10 @@ export class OrdersService {
   //    this.behave.next('Yes Papa');
   // }
 
+  public add(item: Order): Observable<any> {
+    return this.http.post<any>(`${this.urlApi}/orders`, item);
+  }
+  
   public update(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
   }
