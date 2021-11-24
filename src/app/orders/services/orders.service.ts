@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { StateOrder } from 'src/app/core/enums/state-order';
 
 @Injectable({
   providedIn: 'root'
@@ -64,4 +65,14 @@ export class OrdersService {
   //    this.behave.next('Ok Google');
   //    this.behave.next('Yes Papa');
   // }
+
+  public update(item: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
+  }
+
+  public changeState(item: Order, state: StateOrder): Observable<Order> 
+  {
+    const obj = new Order({...item, state});
+    return this.update(obj);
+  }
 }

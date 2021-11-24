@@ -8,7 +8,7 @@
     "buildProd": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "api" : "json-server --watch api/db.json"
+    "api": "json-server --watch api/db.json"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +33,7 @@
     "@angular-devkit/build-angular": "~13.0.3",
     "@angular/cli": "~13.0.3",
     "@angular/compiler-cli": "~13.0.0",
+    "@angular/localize": "^13.0.2",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",

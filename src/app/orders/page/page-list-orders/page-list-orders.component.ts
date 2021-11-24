@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -15,6 +16,8 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
   public headers: string[];
   private count: number = 0;
   private count2: number = 0;
+  public stateOrder = StateOrder;
+  public states = Object.values(StateOrder);
 
   constructor(private ordersService: OrdersService) {
     this.headers = ['Type', 'Client', 'Nb Jours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
@@ -105,6 +108,11 @@ export class PageListOrdersComponent implements OnInit, OnChanges, DoCheck, Afte
   //   return val * coef;
 
   // }
+
+  public onSelectChangeState(order: Order, event:any): void {
+    const state = event.target.value;
+    this.ordersService.changeState(order, state).subscribe( data => order = data);
+  }
 
 
 
