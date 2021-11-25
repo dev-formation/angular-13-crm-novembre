@@ -8,10 +8,10 @@ import { Component, DoCheck, Input, OnChanges, OnDestroy, OnInit } from '@angula
 export class TemplateFullWidthComponent implements OnInit
 // , OnChanges, OnDestroy, DoCheck 
 {
-  @Input() public title: {name: string};
+  @Input() public title: string;
 
   constructor() { 
-    this.title = {name: 'Le titre est ici'};
+    this.title = 'Le titre est ici';
     // console.info('----Constructeur appelé');
     
   }

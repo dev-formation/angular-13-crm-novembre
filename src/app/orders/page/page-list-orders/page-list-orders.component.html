@@ -1,4 +1,4 @@
-<app-template-full-width [title]="myTitle" *ngIf="collection$ | async as collectionVar">
+<app-template-full-width title="List Orders" *ngIf="collection$ | async as collectionVar">
     <button (click)="changeTitle()" >Change the title</button>
     <app-table-light [headers]="headers">
         <tr *ngFor="let item of collectionVar">
